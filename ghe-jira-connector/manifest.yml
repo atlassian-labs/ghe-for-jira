@@ -1,0 +1,19 @@
+modules:
+  jira:issuePanel:
+    - key: ghe-jira-connector-jira-fields
+      function: ghe-jira-connector-jira-text
+      title: GHE Jira Connector
+      description: GHE Jira Connector syncs dev info with Jira Issues
+  function:
+    - key: ghe-jira-connector-jira-text
+      handler: index.runJira
+app:
+  id: ari:cloud:ecosystem::app/9d5a58e8-bda6-4f7e-91e0-1c609d7b9ab6
+  name: ghe-jira-connector
+
+permissions:
+  scopes:
+    - storage:app
+    # jira
+    - read:jira-work
+    - write:jira-work
