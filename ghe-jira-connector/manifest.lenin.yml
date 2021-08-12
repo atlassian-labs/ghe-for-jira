@@ -1,7 +1,7 @@
 modules:
   webtrigger:
-    - key: webhook-receiver
-      function: webhook-function
+    - key: push-webhook-receiver
+      function: push-webhook-function
   devops:developmentInfoProvider:
     - key: devinfo-provider
       homeUrl: https://hello.atlassian.net/wiki/spaces/PF/pages/1210908468/DevOps+Integrations+with+Forge+-+Painted+Picture
@@ -15,8 +15,8 @@ modules:
   function:
     - key: ghe-jira-ctx-jira-text
       handler: index.runJira
-    - key: webhook-function
-      handler: index.processWebhook
+    - key: push-webhook-function
+      handler: index.processPushWebhook
 app:
   id: ari:cloud:ecosystem::app/ed3a9e5d-fbf4-4f54-b7fe-fb565951252d
   name: ghe-jira-connector-lenin
