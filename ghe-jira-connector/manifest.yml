@@ -1,14 +1,14 @@
 modules:
   jira:issuePanel:
     - key: ghe-jira-connector-jira-fields
-      function: ghe-jira-connector-jira-text
+      function: ghe-jira-ctx-jira-text
       title: GHE Jira Connector
-      description: GHE Jira Connector syncs dev info with Jira Issues
+      icon: test.jpeg
   function:
-    - key: ghe-jira-connector-jira-text
+    - key: ghe-jira-ctx-jira-text
       handler: index.runJira
 app:
-  id: ari:cloud:ecosystem::app/9d5a58e8-bda6-4f7e-91e0-1c609d7b9ab6
+  id: ari:cloud:ecosystem::app/ed3a9e5d-fbf4-4f54-b7fe-fb565951252d
   name: ghe-jira-connector
 
 permissions:
