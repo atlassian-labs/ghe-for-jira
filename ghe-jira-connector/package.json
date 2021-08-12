@@ -25,7 +25,7 @@
     "typescript": "^3.6.4"
   },
   "dependencies": {
-    "@forge/api": "^0.5.0",
-    "@forge/ui": "^0.4.4"
+    "@forge/api": "^2.2.0",
+    "@forge/ui": "^0.14.1"
   }
 }
