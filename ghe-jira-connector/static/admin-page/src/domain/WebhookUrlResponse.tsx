@@ -1,0 +1,3 @@
+interface WebhookUrlResponse {
+    url: string
+}

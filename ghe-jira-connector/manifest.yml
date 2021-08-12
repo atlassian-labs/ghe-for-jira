@@ -1,15 +1,20 @@
 modules:
-  jira:issuePanel:
-    - key: ghe-jira-connector-jira-fields
-      function: ghe-jira-ctx-jira-text
-      title: GHE Jira Connector
+  jira:adminPage:
+    - key: ghe-jira-connector-jira-admin-page
+      resource: admin-page
+      resolver:
+        function: admin-page-resolver
+      title: GHE Jira Connector - Admin Page
       icon: test.jpeg
   function:
-    - key: ghe-jira-ctx-jira-text
-      handler: index.runJira
+    - key: admin-page-resolver
+      handler: resolver.handler
 app:
-  id: ari:cloud:ecosystem::app/ed3a9e5d-fbf4-4f54-b7fe-fb565951252d
+  id: ari:cloud:ecosystem::app/7fefad84-21f6-49bd-8d6b-f10e356a7eda
   name: ghe-jira-connector
+resources:
+  - key: admin-page
+    path: static/admin-page/dist
 
 permissions:
   scopes:
@@ -17,3 +22,6 @@ permissions:
     # jira
     - read:jira-work
     - write:jira-work
+  content:
+    styles:
+      - 'unsafe-inline'
