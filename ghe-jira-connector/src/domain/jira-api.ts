@@ -42,7 +42,7 @@ export interface Repository {
 }
 
 export enum PullRequestStatus {
-    OPEN,
+    OPEN ,
     MERGED,
     DECLINED,
     UNKNOWN
@@ -69,7 +69,7 @@ export interface PullrequestReviewer {
 }
 
 export interface Pullrequest {
-    id: string,
+    id: number,
     issueKeys: string[],
     updateSequenceId: number
     status: PullRequestStatus

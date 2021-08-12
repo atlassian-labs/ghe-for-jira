@@ -42,3 +42,38 @@ export interface GitHubCommitAuthor {
 export interface GitHubOrganization {
     node_id: string,
 }
+
+export interface GitHubPullrequestUser{
+    login: string
+    avatar_url: string
+    url: string
+}
+
+export interface GitHubPullrequestHeadBranch{
+    url: string
+}
+
+export interface GitHubPullrequestBaseBranch{
+    url: string
+}
+
+export interface GitHubPullrequest {
+    id: number
+    number: number
+    state: "open" | "closed"
+    url: string
+    title: string
+    merged: boolean
+    commits: number
+    comments: number
+    updated_at: string
+    user: GitHubPullrequestUser
+    head: GitHubPullrequestHeadBranch
+    base: GitHubPullrequestBaseBranch
+    requested_reviewers: GitHubPullrequestUser[]
+}
+
+export interface GitHubPullrequestWebhook {
+    pull_request: GitHubPullrequest
+    repo: GitHubRepository,
+}
