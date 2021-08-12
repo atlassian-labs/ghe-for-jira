@@ -1,4 +1,5 @@
 import {buildRepository} from "../transformations/commits";
+import {GitHubOrganization, GitHubWebhook} from "../domain/github-webhooks";
 
 const buildResponse = (statusCode) => ({
     body: '{}',
@@ -8,7 +9,7 @@ const buildResponse = (statusCode) => ({
     statusCode: statusCode,
 });
 
-function buildRequestPayload(webhook: any, updateSequenceId: number, organization) {
+function buildRequestPayload(webhook: GitHubWebhook, updateSequenceId: number, organization: GitHubOrganization) {
     return {
         "repositories": [
             buildRepository(webhook, updateSequenceId)
@@ -23,7 +24,7 @@ function buildRequestPayload(webhook: any, updateSequenceId: number, organizatio
     };
 }
 
-export async function sendDevInfoFromWebhooks(cloudId: string, webhook: any) {
+export async function sendDevInfoFromWebhooks(cloudId: string, webhook: GitHubWebhook) {
     const organization = webhook.organization;
 
     let updateSequenceId = Math.floor(new Date().getTime());
