@@ -1,5 +1,4 @@
-import {route} from '@forge/api';
-import {buildCommit, buildRepository} from "../transformations/commits";
+import {buildRepository} from "../transformations/commits";
 
 const buildResponse = (statusCode) => ({
     body: '{}',
@@ -9,10 +8,10 @@ const buildResponse = (statusCode) => ({
     statusCode: statusCode,
 });
 
-function buildRequestPayload(repository, firstCommit, updateSequenceId: number, organization) {
+function buildRequestPayload(webhook: any, updateSequenceId: number, organization) {
     return {
         "repositories": [
-            buildRepository(repository, firstCommit, updateSequenceId)
+            buildRepository(webhook, updateSequenceId)
         ],
         "preventTransitions": false,
         "properties": {
@@ -26,8 +25,6 @@ function buildRequestPayload(repository, firstCommit, updateSequenceId: number, 
 
 export async function sendDevInfoFromWebhooks(cloudId: string, webhook: any) {
     const organization = webhook.organization;
-    const repository = webhook.repository;
-    const firstCommit = webhook.commits[0];
 
     let updateSequenceId = Math.floor(new Date().getTime());
     const result = await global.api
@@ -38,7 +35,7 @@ export async function sendDevInfoFromWebhooks(cloudId: string, webhook: any) {
                     'content-type': 'application/json'
                 },
                 body: JSON.stringify(
-                    buildRequestPayload(repository, firstCommit, updateSequenceId, organization)
+                    buildRequestPayload(webhook, updateSequenceId, organization)
                 ),
             }
         );

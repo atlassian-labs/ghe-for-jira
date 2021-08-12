@@ -20,3 +20,17 @@ export interface GitHubRepository {
     html_url: string,
     branches_url: string
 }
+
+export interface GitHubCommit {
+    id: string,
+    message: string,
+    url: string,
+    timestamp: string,
+    author: GitHubCommitAuthor,
+}
+
+export interface GitHubCommitAuthor {
+    name: string,
+    email: string,
+    username: string,
+}
