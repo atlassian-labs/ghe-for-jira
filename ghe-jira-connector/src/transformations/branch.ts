@@ -1,21 +1,21 @@
 import { GitHubCreateWebhook } from "../domain/github-webhooks";
 import { Branch, Repository } from "../domain/jira-api";
+import { IssueKeyExtractor } from "../common/issue_key_extractor";
 
 const createBranchUrl = (urlTemplate: string, branchName: string): string =>
     urlTemplate.replace("{/branch}", branchName);
 
-const extractBranchFromWebhook = (webhook: GitHubCreateWebhook): Branch => {
+const extractBranchFromWebhook = (webhook: GitHubCreateWebhook, updateSequenceId: number): Branch => {
     return {
         id: `${webhook.repository.full_name}/${webhook.ref}`,
-        updateSequenceId: new Date().getTime(),
+        updateSequenceId: updateSequenceId,
         url: createBranchUrl(webhook.repository.branches_url, webhook.ref),
-        issueKeys: [
-            "TODO-1"
-        ],
+        issueKeys: IssueKeyExtractor.extractIssueKeys(webhook.ref),
+        // TODO: dummy data for now! The webhook doesn't contain this info!
         lastCommit: {
             id: "dummy",
             url: "https://github.com/foobar",
-            updateSequenceId: new Date().getTime(),
+            updateSequenceId: updateSequenceId,
             issueKeys: [
                 "TODO-1"
             ],
@@ -31,15 +31,15 @@ const extractBranchFromWebhook = (webhook: GitHubCreateWebhook): Branch => {
     };
 }
 
-export const transformBranches = (webhook: GitHubCreateWebhook): Repository => {
+export const transformBranchWebhookToRepository = (webhook: GitHubCreateWebhook, updateSequenceId: number): Repository => {
     return {
         id: webhook.repository.id.toString(),
         name: webhook.repository.name,
         description: webhook.repository.description,
         url: webhook.repository.html_url,
         branches: [
-            extractBranchFromWebhook(webhook)
+            extractBranchFromWebhook(webhook, updateSequenceId)
         ],
-        updateSequenceId: new Date().getTime()
+        updateSequenceId: updateSequenceId
     };
 }

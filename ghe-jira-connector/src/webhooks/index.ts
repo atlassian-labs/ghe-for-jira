@@ -1,5 +1,5 @@
-import {buildRepository} from "../transformations/commits";
-import {GitHubOrganization, GitHubPushWebhook} from "../domain/github-webhooks";
+import { Repository } from "../domain/jira-api";
+import {route} from '@forge/api';
 
 const buildResponse = (statusCode) => ({
     body: '{}',
@@ -9,25 +9,24 @@ const buildResponse = (statusCode) => ({
     statusCode: statusCode,
 });
 
-function buildRequestPayload(webhook: GitHubPushWebhook, updateSequenceId: number, organization: GitHubOrganization) {
+function buildDevInfoPayload(repository: Repository) {
     return {
         "repositories": [
-            buildRepository(webhook, updateSequenceId)
+            repository
         ],
         "preventTransitions": false,
-        "properties": {
-            "organizationId": organization.node_id
-        },
         "providerMetadata": {
             "product": "forge-ghe-jira-connector"
         }
     };
 }
 
-export async function sendDevInfoFromWebhooks(cloudId: string, webhook: GitHubPushWebhook) {
-    const organization = webhook.organization;
+export async function sendDevInfo(cloudId: string, repository: Repository) {
+
+    const payload = buildDevInfoPayload(repository);
 
     let updateSequenceId = Math.floor(new Date().getTime());
+    // @ts-ignore
     const result = await global.api
         .asApp()
         .__requestAtlassian(`/jira/devinfo/0.1/cloud/${cloudId}/bulk`, {
@@ -35,9 +34,7 @@ export async function sendDevInfoFromWebhooks(cloudId: string, webhook: GitHubPu
                 headers: {
                     'content-type': 'application/json'
                 },
-                body: JSON.stringify(
-                    buildRequestPayload(webhook, updateSequenceId, organization)
-                ),
+                body: JSON.stringify(payload),
             }
         );
 
@@ -46,3 +43,4 @@ export async function sendDevInfoFromWebhooks(cloudId: string, webhook: GitHubPu
 
     return buildResponse(200);
 }
+

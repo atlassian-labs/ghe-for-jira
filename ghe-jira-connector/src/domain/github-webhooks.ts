@@ -1,7 +1,7 @@
 export interface GitHubPushWebhook {
     // the name of the new branch
     ref: string,
-    ref_type: GitHubRefType,
+    ref_type: "tag" | "branch",
     repository: GitHubRepository,
     commits: GitHubCommit[],
     organization: GitHubOrganization,

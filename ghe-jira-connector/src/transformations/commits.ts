@@ -1,13 +1,13 @@
 import {GitHubCommit, GitHubPushWebhook} from "../domain/github-webhooks";
+import { Repository } from "../domain/jira-api";
+import { IssueKeyExtractor } from "../common/issue_key_extractor";
 
 function buildCommit(commit: GitHubCommit, updateSequenceId: number) {
     const author = commit.author;
 
     return {
         "id": commit.id,
-        "issueKeys": [
-            "TODO-1"
-        ],
+        "issueKeys": IssueKeyExtractor.extractIssueKeys(commit.message),
         "updateSequenceId": updateSequenceId,
         "hash": commit.id,
         "flags": [],
@@ -25,7 +25,7 @@ function buildCommit(commit: GitHubCommit, updateSequenceId: number) {
     };
 }
 
-export function buildRepository(webhook: GitHubPushWebhook, updateSequenceId: number) {
+export function transformCommitsWebhookToRepository(webhook: GitHubPushWebhook, updateSequenceId: number): Repository{
     const firstCommit = webhook.commits[0];
     const repository = webhook.repository;
 

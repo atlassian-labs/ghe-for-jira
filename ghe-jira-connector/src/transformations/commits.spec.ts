@@ -1,4 +1,4 @@
-import { buildRepository } from './commits';
+import { transformCommitsWebhookToRepository } from './commits';
 var assert = require('assert');
 import 'mocha';
 

@@ -10,7 +10,7 @@ See [Set up Forge](https://developer.atlassian.com/platform/forge/set-up-forge/)
 
 ## Quick start
 
-- Modify your app by editing the `src/index.tsx` file.
+- Modify your app by editing the `src/index.ts` file.
 
 - Build and deploy your app by running:
 ```

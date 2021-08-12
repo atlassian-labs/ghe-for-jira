@@ -18,7 +18,7 @@ modules:
     - key: webhook-function
       handler: index.processWebhook
 app:
-  id: ari:cloud:ecosystem::app/ed3a9e5d-fbf4-4f54-b7fe-fb565951252d
+  id: ari:cloud:ecosystem::app/fe8cb8c4-0b40-4b5c-a63a-ed9d459029fd
   name: ghe-for-jira-tom
 
 permissions:
