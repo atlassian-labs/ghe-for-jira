@@ -21,10 +21,10 @@ export interface Commit {
 
 export interface Author {
     name: string,
-    email: string,
-    username: string,
-    url: string,
-    avatar: string
+    email?: string,
+    username?: string,
+    url?: string,
+    avatar?: string
 }
 
 export interface Repository {

@@ -1,4 +1,12 @@
 modules:
+  webtrigger:
+    - key: webhook-receiver
+      function: webhook-function
+  devops:developmentInfoProvider:
+    - key: ghe-for-jira
+      homeUrl: https://hello.atlassian.net/wiki/spaces/PF/pages/1210908468/DevOps+Integrations+with+Forge+-+Painted+Picture
+      name:
+        value: GitHub Enterprise
   jira:issuePanel:
     - key: ghe-jira-connector-jira-fields
       function: ghe-jira-ctx-jira-text
@@ -7,9 +15,11 @@ modules:
   function:
     - key: ghe-jira-ctx-jira-text
       handler: index.runJira
+    - key: webhook-function
+      handler: index.processWebhook
 app:
   id: ari:cloud:ecosystem::app/ed3a9e5d-fbf4-4f54-b7fe-fb565951252d
-  name: ghe-jira-connector
+  name: ghe-for-jira-tom
 
 permissions:
   scopes:

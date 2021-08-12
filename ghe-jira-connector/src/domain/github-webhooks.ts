@@ -7,9 +7,11 @@ export interface GitHubPushWebhook {
     organization: GitHubOrganization,
 }
 
-export enum GitHubRefType{
-    BRANCH = "branch",
-    TAG = "tag"
+export interface GitHubCreateWebhook {
+    // the name of the new branch
+    ref: string,
+    ref_type: "tag" | "branch",
+    repository: GitHubRepository,
 }
 
 export interface GitHubRepository {
