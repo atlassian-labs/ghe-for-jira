@@ -57,7 +57,7 @@ const extractCloudId = (installContext) => (
     installContext.replace("ari:cloud:jira::site/", "")
 );
 
-exports.processWebhook = async (request, context) => {
+exports.processPushWebhook = async (request, context) => {
   const cloudId = extractCloudId(context.installContext);
   await sendDevInfoFromWebhooks(cloudId, request.body);
 }
