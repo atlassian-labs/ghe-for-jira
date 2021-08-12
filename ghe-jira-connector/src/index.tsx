@@ -1,6 +1,5 @@
 import ForgeUI, { render, ContextMenu, Fragment, Button, Table, Head, Row, Cell, InlineDialog, Text, useState, useProductContext, useAction } from '@forge/ui';
-import { info, warn } from './detector-util/logger';
-import api from "@forge/api";
+import {sendDevInfoFromWebhooks} from "./webhooks";
 
 // See README.md for details on generating a Translation API key
 const { DEBUG_LOGGING } = process.env;
@@ -49,3 +48,16 @@ const Panel = () => {
 };
 
 export const runJira = render(<Panel />);
+
+/**
+ * Extracts the cloud ID from the "installContext" string
+ * (which is a Jira site ARI like "ari:cloud:jira::site/fc10a037-0294-4439-8cf4-673c6de246e7").
+ */
+const extractCloudId = (installContext) => (
+    installContext.replace("ari:cloud:jira::site/", "")
+);
+
+exports.processWebhook = async (request, context) => {
+  const cloudId = extractCloudId(context.installContext);
+  await sendDevInfoFromWebhooks(cloudId, request.body);
+}

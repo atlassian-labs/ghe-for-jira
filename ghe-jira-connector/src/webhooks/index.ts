@@ -9,14 +9,6 @@ const buildResponse = (statusCode) => ({
     statusCode: statusCode,
 });
 
-/**
- * Extracts the cloud ID from the "installContext" string
- * (which is a Jira site ARI like "ari:cloud:jira::site/fc10a037-0294-4439-8cf4-673c6de246e7").
- */
-const extractCloudId = (installContext) => (
-    installContext.replace("ari:cloud:jira::site/", "")
-);
-
 function buildRequestPayload(repository, firstCommit, updateSequenceId: number, organization) {
     return {
         "repositories": [
@@ -32,11 +24,7 @@ function buildRequestPayload(repository, firstCommit, updateSequenceId: number, 
     };
 }
 
-exports.processWebhook = async (request, context) => {
-
-    const cloudId = extractCloudId(context.installContext);
-    console.log(route);
-    const webhook = {};
+export async function sendDevInfoFromWebhooks(cloudId: string, webhook: any) {
     const organization = webhook.organization;
     const repository = webhook.repository;
     const firstCommit = webhook.commits[0];
@@ -59,4 +47,4 @@ exports.processWebhook = async (request, context) => {
     console.log(`response: ${JSON.stringify(result)}`);
 
     return buildResponse(200);
-};
+}
