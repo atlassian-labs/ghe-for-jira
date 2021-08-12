@@ -1,4 +1,4 @@
-import {GitHubCommit, GitHubWebhook} from "../domain/github-webhooks";
+import {GitHubCommit, GitHubPushWebhook} from "../domain/github-webhooks";
 
 function buildCommit(commit: GitHubCommit, updateSequenceId: number) {
     const author = commit.author;
@@ -25,7 +25,7 @@ function buildCommit(commit: GitHubCommit, updateSequenceId: number) {
     };
 }
 
-export function buildRepository(webhook: GitHubWebhook, updateSequenceId: number) {
+export function buildRepository(webhook: GitHubPushWebhook, updateSequenceId: number) {
     const firstCommit = webhook.commits[0];
     const repository = webhook.repository;
 

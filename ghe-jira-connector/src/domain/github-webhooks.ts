@@ -1,4 +1,4 @@
-export interface GitHubWebhook {
+export interface GitHubPushWebhook {
     // the name of the new branch
     ref: string,
     ref_type: GitHubRefType,
