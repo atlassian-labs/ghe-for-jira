@@ -41,6 +41,46 @@ export interface Repository {
     updateSequenceId: number
 }
 
-export interface Pullrequest {
+export enum PullRequestStatus {
+    OPEN,
+    MERGED,
+    DECLINED,
+    UNKNOWN
+}
 
+export enum PullRequestApprovalStatus {
+    APPROVED,
+    UNAPPROVED
+}
+
+export interface PullrequestAuthor {
+    name: string
+    email?: string
+    username?: string
+    url?: string
+    avatar?: string
+}
+
+export interface PullrequestReviewer {
+    name: string
+    approvalStatus?: PullRequestApprovalStatus
+    url?: string
+    avatar?: string
+}
+
+export interface Pullrequest {
+    id: string,
+    issueKeys: string[],
+    updateSequenceId: number
+    status: PullRequestStatus
+    title: string
+    author: PullrequestAuthor
+    commentCount: number
+    sourceBranch: string
+    lastUpdate: string
+    url: string
+    displayId: string
+    sourceBranchUrl?: string
+    destinationBranch?: string
+    reviewers?: PullrequestReviewer[]
 }
