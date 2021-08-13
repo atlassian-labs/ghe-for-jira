@@ -17,7 +17,7 @@ function buildCommit(commit: GitHubCommit, updateSequenceId: number) {
             "email": author.email,
             "username": author.username,
         },
-        "fileCount": 1,
+        "fileCount": 0,
         "url": commit.url,
         "files": [],
         "authorTimestamp": commit.timestamp,
@@ -31,14 +31,14 @@ export function transformCommitsWebhookToRepository(webhook: GitHubPushWebhook, 
 
     return {
         "name": repository.name,
-        "description": repository.description,
+        // "description": repository.description,
         "url": repository.html_url,
         "commits": [
             buildCommit(firstCommit, updateSequenceId)
         ],
         "branches": [],
         "pullRequests": [],
-        "id": repository.node_id,
+        "id": repository.id.toString(),
         "updateSequenceId": updateSequenceId
     };
 }

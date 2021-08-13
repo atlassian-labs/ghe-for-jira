@@ -25,6 +25,8 @@ export async function sendDevInfo(cloudId: string, repository: Repository) {
 
     const payload = buildDevInfoPayload(repository);
 
+    console.log(`request payload: ${JSON.stringify(payload)}`);
+
     let updateSequenceId = Math.floor(new Date().getTime());
     // @ts-ignore
     const result = await global.api
@@ -38,7 +40,6 @@ export async function sendDevInfo(cloudId: string, repository: Repository) {
             }
         );
 
-    console.log(result);
     console.log(`response: ${JSON.stringify(result)}`);
 
     return buildResponse(200);

@@ -14,8 +14,8 @@ modules:
     - key: branch-webhook-receiver
       function: branch-webhook-function
   devops:developmentInfoProvider:
-    - key: ghe-jira-connector
-      homeUrl: https://github.internal.atlassian.com/
+    - key: ghe-for-jira
+      homeUrl: https://github.internal.atlassian.com
       name:
         value: GitHub Enterprise
   function:
@@ -28,8 +28,8 @@ modules:
     - key: admin-page-resolver
       handler: resolver.handler
 app:
-  id: ari:cloud:ecosystem::app/7fefad84-21f6-49bd-8d6b-f10e356a7eda
-  name: ghe-jira-connector
+  id: ari:cloud:ecosystem::app/fe8cb8c4-0b40-4b5c-a63a-ed9d459029fd
+  name: ghe-for-jira
 resources:
   - key: admin-page
     path: static/admin-page/dist
