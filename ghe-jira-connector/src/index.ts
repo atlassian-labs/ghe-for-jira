@@ -2,6 +2,7 @@ import { sendDevInfo } from "./webhooks";
 import { transformCommitsWebhookToRepository } from "./transformations/commits";
 import { transformBranchWebhookToRepository } from "./transformations/branch";
 import {transformPullrequestWebhookToRepository} from "./transformations/pullrequest";
+import { GitHubPushWebhook } from "./domain/github-webhooks";
 
 /**
  * Extracts the cloud ID from the "installContext" string
@@ -13,18 +14,18 @@ const extractCloudId = (installContext) => (
 
 exports.processPushWebhook = async (request, context) => {
   const cloudId = extractCloudId(context.installContext);
-  const repository = transformCommitsWebhookToRepository(request.body, new Date().getTime());
-  await sendDevInfo(cloudId, repository);
+  const repository = transformCommitsWebhookToRepository(JSON.parse(request.body) as GitHubPushWebhook, new Date().getTime());
+  return sendDevInfo(cloudId, repository);
 }
 
 exports.processPullrequestWebhook = async (request, context) => {
   const cloudId = extractCloudId(context.installContext);
   const repository = transformPullrequestWebhookToRepository(request.body, new Date().getTime());
-  await sendDevInfo(cloudId, repository);
+  return sendDevInfo(cloudId, repository);
 }
 
 exports.processBranchWebhook = async (request, context) => {
   const cloudId = extractCloudId(context.installContext);
   const repository = transformBranchWebhookToRepository(request.body, new Date().getTime());
-  await sendDevInfo(cloudId, repository);
+  return sendDevInfo(cloudId, repository);
 }

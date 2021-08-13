@@ -13,7 +13,7 @@ export interface Commit {
     hash: string,
     message: string,
     author: Author,
-    fileCount: number,
+    fileCount?: number,
     url: string,
     authorTimestamp: string,
     displayId: string

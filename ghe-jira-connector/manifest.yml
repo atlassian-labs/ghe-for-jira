@@ -8,7 +8,7 @@ modules:
       function: branch-webhook-function
   devops:developmentInfoProvider:
     - key: ghe-for-jira
-      homeUrl: https://github.internal.atlassian.com/
+      homeUrl: https://github.internal.atlassian.com
       name:
         value: GitHub Enterprise
   function:
