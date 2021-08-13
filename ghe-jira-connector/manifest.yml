@@ -1,4 +1,11 @@
 modules:
+  jira:adminPage:
+    - key: ghe-jira-connector-jira-admin-page
+      resource: admin-page
+      resolver:
+        function: admin-page-resolver
+      title: GHE Jira Connector - Admin Page
+      icon: https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png
   webtrigger:
     - key: push-webhook-receiver
       function: push-webhook-function
@@ -18,11 +25,19 @@ modules:
       handler: index.processPullrequestWebhook
     - key: branch-webhook-function
       handler: index.processBranchWebhook
+    - key: admin-page-resolver
+      handler: resolver.handler
 app:
   id: ari:cloud:ecosystem::app/fe8cb8c4-0b40-4b5c-a63a-ed9d459029fd
   name: ghe-for-jira
+resources:
+  - key: admin-page
+    path: static/admin-page/dist
 
 permissions:
   scopes:
     - storage:app
     - manage:jira-data-provider
+  content:
+    styles:
+      - 'unsafe-inline'
