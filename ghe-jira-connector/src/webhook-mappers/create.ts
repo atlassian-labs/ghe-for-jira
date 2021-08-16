@@ -5,9 +5,11 @@ import { IssueKeyExtractor } from "../common/issue_key_extractor";
 const createBranchUrl = (urlTemplate: string, branchName: string): string =>
     urlTemplate.replace("{/branch}", branchName);
 
-const extractBranchFromWebhook = (webhook: GitHubCreateWebhook, updateSequenceId: number): Branch => {
+const extractBranchFromWebhook = (webhook: GitHub.CreateWebhook, updateSequenceId: number): DevInfo.Branch => {
     return {
-        id: `${webhook.repository.full_name}/${webhook.ref}`,
+        // may only contain alphanumeric characters or [~.-_]
+        id: `${webhook.repository.name}-${webhook.ref}`,
+        name: webhook.ref,
         updateSequenceId: updateSequenceId,
         url: createBranchUrl(webhook.repository.branches_url, webhook.ref),
         issueKeys: IssueKeyExtractor.extractIssueKeys(webhook.ref),

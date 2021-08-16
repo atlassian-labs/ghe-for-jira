@@ -10,14 +10,14 @@ const getStatus = (action: string, merged: boolean): PullRequestStatus => {
     if(action == "open")
         return PullRequestStatus.OPEN
     else if (action == "closed" && merged)
-        return PullRequestStatus.MERGED
+        return DevInfo.PullRequestStatus.MERGED
     else if (action == "closed" && !merged)
-        return PullRequestStatus.DECLINED
+        return DevInfo.PullRequestStatus.DECLINED
     else
-        return PullRequestStatus.UNKNOWN
+        return DevInfo.PullRequestStatus.UNKNOWN
 }
 
-const extractPullrequestromWebhook = (webhook: GitHubPullrequestWebhook, updateSequenceId: number): Pullrequest => {
+const extractPullrequestromWebhook = (webhook: GitHub.PullrequestWebhook, updateSequenceId: number): DevInfo.Pullrequest => {
     return {
         id: webhook.pull_request.id,
         issueKeys: IssueKeyExtractor.extractIssueKeys(webhook.pull_request.title),
@@ -31,11 +31,11 @@ const extractPullrequestromWebhook = (webhook: GitHubPullrequestWebhook, updateS
             avatar: webhook.pull_request.user.avatar_url,
         },
         commentCount: webhook.pull_request.comments,
-        sourceBranch: webhook.pull_request.head.url,
+        sourceBranch: webhook.pull_request.head.ref,
         lastUpdate: webhook.pull_request.updated_at,
         url: webhook.pull_request.url,
         displayId: webhook.pull_request.number.toString(),
-        sourceBranchUrl: webhook.pull_request.head.url,
+        sourceBranchUrl: createBranchUrl(webhook.repository.branches_url, webhook.pull_request.head.ref),
         destinationBranch: webhook.pull_request.base.url,
         reviewers: webhook.pull_request.requested_reviewers.map(
                 (user) => {
@@ -47,10 +47,10 @@ const extractPullrequestromWebhook = (webhook: GitHubPullrequestWebhook, updateS
 
 export const transformPullrequestWebhookToRepository = (webhook: GitHubPullrequestWebhook, updateSequenceId: number): Repository => {
     return {
-        id: webhook.repo.id.toString(),
-        name: webhook.repo.name,
-        description: webhook.repo.description,
-        url: webhook.repo.html_url,
+        id: webhook.repository.id.toString(),
+        name: webhook.repository.name,
+        description: webhook.repository.description,
+        url: webhook.repository.html_url,
         pullRequests: [
             extractPullrequestromWebhook(webhook, updateSequenceId)
         ],

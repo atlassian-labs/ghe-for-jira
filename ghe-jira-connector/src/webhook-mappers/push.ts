@@ -2,7 +2,7 @@ import {GitHubCommit, GitHubPushWebhook} from "../domain/github-webhooks";
 import { Repository } from "../domain/jira-api";
 import { IssueKeyExtractor } from "../common/issue_key_extractor";
 
-function buildCommit(commit: GitHubCommit, updateSequenceId: number) {
+function buildCommit(commit: GitHub.Commit, updateSequenceId: number) {
     const author = commit.author;
 
     return {
