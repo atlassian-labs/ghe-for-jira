@@ -30,6 +30,8 @@ modules:
 app:
   id: ari:cloud:ecosystem::app/fe8cb8c4-0b40-4b5c-a63a-ed9d459029fd
   name: ghe-for-jira
+  runtime:
+    snapshots: false
 resources:
   - key: admin-page
     path: static/admin-page/dist

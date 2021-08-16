@@ -1,14 +1,13 @@
-import {GitHubPullrequestWebhook} from "../domain/github-webhooks";
-import {
-    Pullrequest,
-    PullRequestStatus,
-    Repository
-} from "../domain/jira-api";
-import {IssueKeyExtractor} from "../common/issue_key_extractor";
+import { IssueKeyExtractor } from "../common/issue-key-extractor";
+import { DevInfo } from "../devinfo/devinfo-types";
+import { GitHub } from "../github/github-types";
 
-const getStatus = (action: string, merged: boolean): PullRequestStatus => {
-    if(action == "open")
-        return PullRequestStatus.OPEN
+const createBranchUrl = (urlTemplate: string, branchName: string): string =>
+    urlTemplate.replace("{/branch}", branchName);
+
+const getStatus = (action: string, merged: boolean): DevInfo.PullRequestStatus => {
+    if (action == "open")
+        return DevInfo.PullRequestStatus.OPEN
     else if (action == "closed" && merged)
         return DevInfo.PullRequestStatus.MERGED
     else if (action == "closed" && !merged)
@@ -38,14 +37,15 @@ const extractPullrequestromWebhook = (webhook: GitHub.PullrequestWebhook, update
         sourceBranchUrl: createBranchUrl(webhook.repository.branches_url, webhook.pull_request.head.ref),
         destinationBranch: webhook.pull_request.base.url,
         reviewers: webhook.pull_request.requested_reviewers.map(
-                (user) => {
-                    return {name: user.login}
-                }
-            )
+            (user) => {
+                return { name: user.login }
+            }
+        )
     };
 }
 
-export const transformPullrequestWebhookToRepository = (webhook: GitHubPullrequestWebhook, updateSequenceId: number): Repository => {
+export const mapPullrequestWebhook = (webhook: GitHub.PullrequestWebhook, updateSequenceId: number): DevInfo.Repository => {
+    console.log(`pullrequest webhook: ${JSON.stringify(webhook)}`);
     return {
         id: webhook.repository.id.toString(),
         name: webhook.repository.name,

@@ -1,6 +1,6 @@
-import { GitHubCreateWebhook } from "../domain/github-webhooks";
-import { Branch, Repository } from "../domain/jira-api";
-import { IssueKeyExtractor } from "../common/issue_key_extractor";
+import { IssueKeyExtractor } from "../common/issue-key-extractor";
+import { DevInfo } from "../devinfo/devinfo-types";
+import { GitHub } from "../github/github-types";
 
 const createBranchUrl = (urlTemplate: string, branchName: string): string =>
     urlTemplate.replace("{/branch}", branchName);
@@ -33,7 +33,7 @@ const extractBranchFromWebhook = (webhook: GitHub.CreateWebhook, updateSequenceI
     };
 }
 
-export const transformBranchWebhookToRepository = (webhook: GitHubCreateWebhook, updateSequenceId: number): Repository => {
+export const mapCreateWebhook = (webhook: GitHub.CreateWebhook, updateSequenceId: number): DevInfo.Repository => {
     return {
         id: webhook.repository.id.toString(),
         name: webhook.repository.name,

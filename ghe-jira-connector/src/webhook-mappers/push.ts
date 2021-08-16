@@ -1,6 +1,6 @@
-import {GitHubCommit, GitHubPushWebhook} from "../domain/github-webhooks";
-import { Repository } from "../domain/jira-api";
-import { IssueKeyExtractor } from "../common/issue_key_extractor";
+import { IssueKeyExtractor } from "../common/issue-key-extractor";
+import { GitHub } from "../github/github-types";
+import { DevInfo } from "../devinfo/devinfo-types";
 
 function buildCommit(commit: GitHub.Commit, updateSequenceId: number) {
     const author = commit.author;
@@ -25,15 +25,16 @@ function buildCommit(commit: GitHub.Commit, updateSequenceId: number) {
     };
 }
 
-export function transformCommitsWebhookToRepository(webhook: GitHubPushWebhook, updateSequenceId: number): Repository{
-    const firstCommit = webhook.commits[0];
-    const repository = webhook.repository;
+export function mapPushWebhook(webhook: GitHub.PushWebhook, updateSequenceId: number): DevInfo.Repository {
+    console.log(`incoming webhook: ${JSON.stringify(webhook)}`);
+    const firstCommit: GitHub.Commit = webhook.commits[0];
+    const repository: GitHub.Repository = webhook.repository;
 
     return {
         "name": repository.name,
-        // "description": repository.description,
         "url": repository.html_url,
         "commits": [
+            // TODO: include all commits instead of just the first one
             buildCommit(firstCommit, updateSequenceId)
         ],
         "branches": [],
