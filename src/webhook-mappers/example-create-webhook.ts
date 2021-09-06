@@ -136,6 +136,6 @@ const webhook = {
         "id": 5,
         "node_id": "MDIzOkludGVncmF0aW9uSW5zdGFsbGF0aW9uNQ=="
     }
-} as GitHub.CreateWebhook;
+} as GitHub.BranchWebhook;
 
 export default webhook;

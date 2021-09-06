@@ -1,7 +1,7 @@
 import webhook from "./example-create-webhook";
 var assert = require('assert');
 import 'mocha';
-import { mapCreateWebhook } from "./create";
+import { mapCreateWebhook } from "./branch";
 
 describe("GitHub 'create' webhook", () => {
     it("should be transformed into a DevInfo Repository object", () => {

@@ -1,7 +1,7 @@
 import { GitHub } from "../github/github-types";
 import { DevInfo } from "../devinfo/devinfo-types";
 import { mapPushWebhook } from "./push";
-import { mapCreateWebhook } from "./create";
+import { mapCreateWebhook } from "./branch";
 import { mapPullrequestWebhook } from "./pullrequest";
 import { sendDevInfo } from "../devinfo/devinfo-client";
 import getWebhookType = GitHub.getWebhookType;

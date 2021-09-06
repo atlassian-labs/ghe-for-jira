@@ -56,7 +56,7 @@ export namespace GitHub {
      * Payload of a GitHub "create" webhook.
      * @see https://docs.github.com/en/enterprise-server@2.22/developers/webhooks-and-events/webhooks/webhook-events-and-payloads#create
      */
-    export interface CreateWebhook extends Webhook {
+    export interface BranchWebhook extends Webhook {
         ref: string,
         ref_type: "tag" | "branch",
         repository: Repository,

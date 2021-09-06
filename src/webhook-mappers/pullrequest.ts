@@ -16,7 +16,7 @@ const getStatus = (action: string, merged: boolean): DevInfo.PullRequestStatus =
         return DevInfo.PullRequestStatus.UNKNOWN
 }
 
-const extractPullrequestromWebhook = (webhook: GitHub.PullrequestWebhook, updateSequenceId: number): DevInfo.Pullrequest => {
+const extractPullrequestFromWebhook = (webhook: GitHub.PullrequestWebhook, updateSequenceId: number): DevInfo.Pullrequest => {
     return {
         id: webhook.pull_request.id,
         issueKeys: IssueKeyExtractor.extractIssueKeys(webhook.pull_request.title),
@@ -53,7 +53,7 @@ export const mapPullrequestWebhook = (webhook: GitHub.PullrequestWebhook): DevIn
         description: webhook.repository.description,
         url: webhook.repository.html_url,
         pullRequests: [
-            extractPullrequestromWebhook(webhook, updateSequenceId)
+            extractPullrequestFromWebhook(webhook, updateSequenceId)
         ],
         updateSequenceId: updateSequenceId
     };

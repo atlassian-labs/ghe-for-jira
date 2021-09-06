@@ -5,7 +5,7 @@ import { GitHub } from "../github/github-types";
 const createBranchUrl = (urlTemplate: string, branchName: string): string =>
     urlTemplate.replace("{/branch}", branchName);
 
-const extractBranchFromWebhook = (webhook: GitHub.CreateWebhook, updateSequenceId: number): DevInfo.Branch => {
+const extractBranchFromWebhook = (webhook: GitHub.BranchWebhook, updateSequenceId: number): DevInfo.Branch => {
     return {
         // may only contain alphanumeric characters or [~.-_]
         id: `${webhook.repository.name}-${webhook.ref}`,
@@ -33,7 +33,7 @@ const extractBranchFromWebhook = (webhook: GitHub.CreateWebhook, updateSequenceI
     };
 }
 
-export const mapCreateWebhook = (webhook: GitHub.CreateWebhook): DevInfo.Repository => {
+export const mapCreateWebhook = (webhook: GitHub.BranchWebhook): DevInfo.Repository => {
     const updateSequenceId = new Date().getTime();
     return {
         id: webhook.repository.id.toString(),
