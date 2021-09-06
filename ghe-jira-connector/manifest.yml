@@ -7,24 +7,16 @@ modules:
       title: GHE Jira Connector - Admin Page
       icon: https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png
   webtrigger:
-    - key: push-webhook-receiver
-      function: push-webhook-function
-    - key: pr-webhook-receiver
-      function: pr-webhook-function
-    - key: branch-webhook-receiver
-      function: branch-webhook-function
+    - key: webhook-receiver
+      function: webhook-function
   devops:developmentInfoProvider:
     - key: ghe-for-jira
       homeUrl: https://github.internal.atlassian.com
       name:
         value: GitHub Enterprise
   function:
-    - key: push-webhook-function
-      handler: index.processPushWebhook
-    - key: pr-webhook-function
-      handler: index.processPullrequestWebhook
-    - key: branch-webhook-function
-      handler: index.processBranchWebhook
+    - key: webhook-function
+      handler: index.processWebhook
     - key: admin-page-resolver
       handler: resolver.handler
 app:

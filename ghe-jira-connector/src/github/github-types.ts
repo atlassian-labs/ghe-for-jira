@@ -1,10 +1,50 @@
 export namespace GitHub {
 
+    export enum WebhookType {
+        UNKNOWN,
+        PULL_REQUEST,
+        BRANCH,
+        PUSH
+    }
+
+    /**
+     * Tries to identify the type of an incoming webhook payload by checking fields that uniquely describe the webhook type.
+     */
+    export const getWebhookType = (payload: any): WebhookType => {
+        if (payload.action
+            && payload.number
+            && payload.pull_request) {
+            // https://docs.github.com/en/enterprise-server@3.1/developers/webhooks-and-events/webhooks/webhook-events-and-payloads#pull_request
+            return WebhookType.PULL_REQUEST;
+        } else if (payload.ref
+            && payload.ref_type
+            && payload.master_branch) {
+            // https://docs.github.com/en/enterprise-server@3.1/developers/webhooks-and-events/webhooks/webhook-events-and-payloads#create
+            return WebhookType.BRANCH;
+        } else if (payload.ref
+            && payload.before
+            && payload.after
+            && payload.commits) {
+            // https://docs.github.com/en/enterprise-server@3.1/developers/webhooks-and-events/webhooks/webhook-events-and-payloads#push
+            return WebhookType.PUSH;
+        }
+
+        return WebhookType.UNKNOWN;
+    }
+
+    /**
+     * Marker interface for all supported webhook types.
+     */
+    export interface Webhook {
+
+    }
+
+
     /**
      * Payload of a GitHub "push" webhook.
      * @see https://docs.github.com/en/enterprise-server@2.22/developers/webhooks-and-events/webhooks/webhook-events-and-payloads#push
      */
-    export interface PushWebhook {
+    export interface PushWebhook extends Webhook {
         ref: string,
         ref_type: "tag" | "branch",
         repository: Repository,
@@ -16,7 +56,7 @@ export namespace GitHub {
      * Payload of a GitHub "create" webhook.
      * @see https://docs.github.com/en/enterprise-server@2.22/developers/webhooks-and-events/webhooks/webhook-events-and-payloads#create
      */
-    export interface CreateWebhook {
+    export interface CreateWebhook extends Webhook {
         ref: string,
         ref_type: "tag" | "branch",
         repository: Repository,
@@ -26,7 +66,7 @@ export namespace GitHub {
      * Payload of a GitHub "pull_request" webhook.
      * @see https://docs.github.com/en/enterprise-server@2.22/developers/webhooks-and-events/webhooks/webhook-events-and-payloads#pull_request
      */
-    export interface PullrequestWebhook {
+    export interface PullrequestWebhook extends Webhook {
         pull_request: Pullrequest
         repository: Repository,
     }

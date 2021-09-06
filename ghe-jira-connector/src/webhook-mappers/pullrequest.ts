@@ -44,8 +44,9 @@ const extractPullrequestromWebhook = (webhook: GitHub.PullrequestWebhook, update
     };
 }
 
-export const mapPullrequestWebhook = (webhook: GitHub.PullrequestWebhook, updateSequenceId: number): DevInfo.Repository => {
+export const mapPullrequestWebhook = (webhook: GitHub.PullrequestWebhook): DevInfo.Repository => {
     console.log(`pullrequest webhook: ${JSON.stringify(webhook)}`);
+    const updateSequenceId = new Date().getTime();
     return {
         id: webhook.repository.id.toString(),
         name: webhook.repository.name,

@@ -25,8 +25,9 @@ function buildCommit(commit: GitHub.Commit, updateSequenceId: number) {
     };
 }
 
-export function mapPushWebhook(webhook: GitHub.PushWebhook, updateSequenceId: number): DevInfo.Repository {
+export function mapPushWebhook(webhook: GitHub.PushWebhook): DevInfo.Repository {
     console.log(`incoming webhook: ${JSON.stringify(webhook)}`);
+    const updateSequenceId = new Date().getTime();
     const firstCommit: GitHub.Commit = webhook.commits[0];
     const repository: GitHub.Repository = webhook.repository;
 
