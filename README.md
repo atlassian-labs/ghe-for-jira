@@ -1,36 +1,13 @@
-# README #
+# GitHub Enterprise for Jira Integration
 
-This README would normally document whatever steps are necessary to get your application up and running.
+This app can be installed into a Jira site to integrate GitHub Enterprise (Server) into Jira. It' built on top of Atlassian's [Forge](https://developer.atlassian.com/platform/forge/) platform. 
 
-## CMD
-- `cd language-detector`
-- `npm i`
-- `forge deploy`
-- `forge install`
-- `forge register` will overwrite appid
+**Warning!** This app is still very much in an alpha state and will need some polishing to be ready to use in production environments.
 
-### What is this repository for? ###
+## Contributing
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+See the [contribution guide](CONTRIBUTING.md).
 
-### How do I get set up? ###
+## Features
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
-
-### Contribution guidelines ###
-
-* Writing tests
-* Code review
-* Other guidelines
-
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
+To be done.
