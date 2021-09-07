@@ -34,7 +34,7 @@ app:
     snapshots: false
 resources:
   - key: admin-page
-    path: static/dist
+    path: client/dist
     tunnel:
       port: 8080
 permissions:
