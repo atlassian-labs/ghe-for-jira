@@ -4,7 +4,7 @@ modules:
       resource: admin-page
       resolver:
         function: admin-page-resolver
-      title: GHE Jira Connector - Admin Page
+      title: GitHub Enterprise configuration
       icon: https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png
   webtrigger:
     - key: push-webhook-receiver
@@ -28,14 +28,15 @@ modules:
     - key: admin-page-resolver
       handler: resolver.handler
 app:
-  id: ari:cloud:ecosystem::app/fe8cb8c4-0b40-4b5c-a63a-ed9d459029fd
-  name: ghe-for-jira
+  id: ari:cloud:ecosystem::app/3d4b6d04-c521-4431-b54b-05215b621c89
+  # name: ghe-forge-app
   runtime:
     snapshots: false
 resources:
   - key: admin-page
-    path: static/admin-page/dist
-
+    path: static/dist
+    tunnel:
+      port: 8080
 permissions:
   scopes:
     - storage:app

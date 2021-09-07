@@ -1,6 +1,6 @@
 # Forge Hello World (Typescript)
 
-This project contains a Forge app written in Typescript that displays `Hello World!` in a Confluence macro. 
+This project contains a Forge app written in Typescript that displays `Hello World!` in a Confluence macro.
 
 See [developer.atlassian.com/platform/forge/](https://developer.atlassian.com/platform/forge) for documentation and tutorials explaining Forge.
 
@@ -10,6 +10,8 @@ See [Set up Forge](https://developer.atlassian.com/platform/forge/set-up-forge/)
 
 ## Quick start
 
+- Run `npm i` inside the root directory **and** inside the static directory.
+- 
 - Modify your app by editing the `src/index.ts` file.
 
 - Build and deploy your app by running:
@@ -22,10 +24,11 @@ forge deploy
 forge install
 ```
 
-- Develop your app by running `forge tunnel` to proxy invocations locally:
-```
-forge tunnel
-```
+## Local development
+- `cd static && npm start`. This will start the webpack dev server on port 8080.
+- From within the root directory, run `forge tunnel`. This will allow you to see local changes in the app.
+
+If you make changes to the manifest.yml file e.g. update the title value for `jira:adminPage:`, you will need to run `npm run build` from within the static directory to see these changes take affect.
 
 ### Notes
 - Use the `forge deploy` command when you want to persist code changes.
