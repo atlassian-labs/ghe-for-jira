@@ -1,7 +1,7 @@
 import React from "react";
 import { AdminPageTitle, AdminPageContainer, AdminPageMessage } from './AdminPage.styles';
 import { jiraAdminPageCopy } from "../../common/copy";
-import { GitHubIntegration } from "../images-and-icons/GitHubIntegration";
+import { GitHubIntegrationImage } from "../images-and-icons/GitHubIntegration";
 import { ActionButton } from "../button/index";
 
 const AdminEmptyState = (): JSX.Element => {
@@ -10,7 +10,7 @@ const AdminEmptyState = (): JSX.Element => {
 
   return (
     <AdminPageContainer>
-      <GitHubIntegration />
+      <GitHubIntegrationImage />
       <AdminPageTitle>{emptyStateTitle}</AdminPageTitle>
       <AdminPageMessage>{emptyStateMessage}</AdminPageMessage>
       <ActionButton>{connectToGitHubButtonLabel}</ActionButton>

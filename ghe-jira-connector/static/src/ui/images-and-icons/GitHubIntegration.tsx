@@ -1,9 +1,9 @@
 import React from "react";
 import { AdminPageImageContainer } from "../admin-page/AdminPage.styles";
 
-export function GitHubIntegration(): JSX.Element {
+export function GitHubIntegrationImage(): JSX.Element {
   return (
-    <AdminPageImageContainer>
+    <AdminPageImageContainer data-testid="gitHubIntegrationImage">
       <svg
         width="565"
         height="267"
@@ -11,13 +11,13 @@ export function GitHubIntegration(): JSX.Element {
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <g clip-path="url(#clip0)">
+        <g clipPath="url(#clip0)">
           <rect
             width="563.88"
             height="265.81"
             transform="translate(0.870117 0.509766)"
             fill="white"
-            fill-opacity="0.01"
+            fillOpacity="0.01"
           />
           <path
             d="M150.05 257.529H143.87L144.52 254.379H150.7L150.05 257.529Z"
@@ -30,8 +30,8 @@ export function GitHubIntegration(): JSX.Element {
           <path
             d="M141.99 98.8398C110.62 98.8398 85.1801 124.27 85.1801 155.65V206.74C85.1801 238.11 59.7501 263.55 28.3701 263.55H0.870117"
             stroke="url(#paint0_linear)"
-            stroke-width="4.4681"
-            stroke-miterlimit="10"
+            strokeWidth="4.4681"
+            strokeMiterlimit="10"
           />
           <path
             d="M420.16 124.399L418.27 121.929L417.53 116.109L417.4 112.789H419.42L421.66 115.439C422.18 116.059 422.62 116.749 422.94 117.499C423.39 118.539 423.63 119.669 423.63 120.809V123.189L420.16 124.399Z"
@@ -62,8 +62,8 @@ export function GitHubIntegration(): JSX.Element {
           <path
             d="M423.62 98.8398C454.99 98.8398 480.43 124.27 480.43 155.65V206.74C480.43 238.11 505.86 263.55 537.24 263.55H564.75"
             stroke="url(#paint3_linear)"
-            stroke-width="4.4681"
-            stroke-miterlimit="10"
+            strokeWidth="4.4681"
+            strokeMiterlimit="10"
           />
           <path
             d="M133.69 107.8C131.9 107.8 130.45 106.35 130.45 104.56V93.1502C130.45 91.3602 131.9 89.9102 133.69 89.9102C135.48 89.9102 136.93 91.3602 136.93 93.1502V104.57C136.92 106.35 135.48 107.8 133.69 107.8Z"
@@ -216,8 +216,8 @@ export function GitHubIntegration(): JSX.Element {
             y2="181.192"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#C1C7D0" />
-            <stop offset="1" stop-color="#C1C7D0" stop-opacity="0" />
+            <stop stopColor="#C1C7D0" />
+            <stop offset="1" stopColor="#C1C7D0" stopOpacity="0" />
           </linearGradient>
           <linearGradient
             id="paint1_linear"
@@ -227,8 +227,8 @@ export function GitHubIntegration(): JSX.Element {
             y2="264.428"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#091E42" />
-            <stop offset="0.8433" stop-color="#091E42" stop-opacity="0" />
+            <stop stopColor="#091E42" />
+            <stop offset="0.8433" stopColor="#091E42" stopOpacity="0" />
           </linearGradient>
           <linearGradient
             id="paint2_linear"
@@ -238,8 +238,8 @@ export function GitHubIntegration(): JSX.Element {
             y2="264.428"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#091E42" />
-            <stop offset="0.8433" stop-color="#091E42" stop-opacity="0" />
+            <stop stopColor="#091E42" />
+            <stop offset="0.8433" stopColor="#091E42" stopOpacity="0" />
           </linearGradient>
           <linearGradient
             id="paint3_linear"
@@ -249,11 +249,11 @@ export function GitHubIntegration(): JSX.Element {
             y2="181.192"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#0065FF" />
-            <stop offset="0.1724" stop-color="#076AFF" stop-opacity="0.8007" />
-            <stop offset="0.4145" stop-color="#1976FF" stop-opacity="0.5208" />
-            <stop offset="0.6966" stop-color="#378BFF" stop-opacity="0.1947" />
-            <stop offset="0.8651" stop-color="#4C9AFF" stop-opacity="0" />
+            <stop stopColor="#0065FF" />
+            <stop offset="0.1724" stopColor="#076AFF" stopOpacity="0.8007" />
+            <stop offset="0.4145" stopColor="#1976FF" stopOpacity="0.5208" />
+            <stop offset="0.6966" stopColor="#378BFF" stopOpacity="0.1947" />
+            <stop offset="0.8651" stopColor="#4C9AFF" stopOpacity="0" />
           </linearGradient>
           <radialGradient
             id="paint4_radial"
@@ -263,13 +263,13 @@ export function GitHubIntegration(): JSX.Element {
             gradientUnits="userSpaceOnUse"
             gradientTransform="translate(285 99.0229) scale(96.5182)"
           >
-            <stop stop-color="#FFF0B2" />
-            <stop offset="0.1584" stop-color="#FFE587" stop-opacity="0.8416" />
-            <stop offset="0.3589" stop-color="#FFDA57" stop-opacity="0.6411" />
-            <stop offset="0.5498" stop-color="#FFD031" stop-opacity="0.4502" />
-            <stop offset="0.7256" stop-color="#FFC916" stop-opacity="0.2744" />
-            <stop offset="0.8811" stop-color="#FFC506" stop-opacity="0.1189" />
-            <stop offset="1" stop-color="#FFC400" stop-opacity="0" />
+            <stop stopColor="#FFF0B2" />
+            <stop offset="0.1584" stopColor="#FFE587" stopOpacity="0.8416" />
+            <stop offset="0.3589" stopColor="#FFDA57" stopOpacity="0.6411" />
+            <stop offset="0.5498" stopColor="#FFD031" stopOpacity="0.4502" />
+            <stop offset="0.7256" stopColor="#FFC916" stopOpacity="0.2744" />
+            <stop offset="0.8811" stopColor="#FFC506" stopOpacity="0.1189" />
+            <stop offset="1" stopColor="#FFC400" stopOpacity="0" />
           </radialGradient>
           <linearGradient
             id="paint5_linear"
@@ -279,8 +279,8 @@ export function GitHubIntegration(): JSX.Element {
             y2="98.8386"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#0052CC" />
-            <stop offset="1" stop-color="#2684FF" />
+            <stop stopColor="#0052CC" />
+            <stop offset="1" stopColor="#2684FF" />
           </linearGradient>
           <linearGradient
             id="paint6_linear"
@@ -290,8 +290,8 @@ export function GitHubIntegration(): JSX.Element {
             y2="120.044"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#7A869A" />
-            <stop offset="1" stop-color="#DFE1E5" />
+            <stop stopColor="#7A869A" />
+            <stop offset="1" stopColor="#DFE1E5" />
           </linearGradient>
           <linearGradient
             id="paint7_linear"
@@ -301,8 +301,8 @@ export function GitHubIntegration(): JSX.Element {
             y2="75.0106"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#7A869A" />
-            <stop offset="1" stop-color="#DFE1E5" />
+            <stop stopColor="#7A869A" />
+            <stop offset="1" stopColor="#DFE1E5" />
           </linearGradient>
           <linearGradient
             id="paint8_linear"
@@ -312,8 +312,8 @@ export function GitHubIntegration(): JSX.Element {
             y2="51.4514"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#2684FF" />
-            <stop offset="1" stop-color="#B2D4FF" />
+            <stop stopColor="#2684FF" />
+            <stop offset="1" stopColor="#B2D4FF" />
           </linearGradient>
           <linearGradient
             id="paint9_linear"
@@ -323,8 +323,8 @@ export function GitHubIntegration(): JSX.Element {
             y2="98.8386"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#7A869A" />
-            <stop offset="1" stop-color="#EBECF0" />
+            <stop stopColor="#7A869A" />
+            <stop offset="1" stopColor="#EBECF0" />
           </linearGradient>
           <linearGradient
             id="paint10_linear"
@@ -334,8 +334,8 @@ export function GitHubIntegration(): JSX.Element {
             y2="51.4514"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#C1C7D0" />
-            <stop offset="1" stop-color="#F4F5F7" />
+            <stop stopColor="#C1C7D0" />
+            <stop offset="1" stopColor="#F4F5F7" />
           </linearGradient>
           <linearGradient
             id="paint11_linear"
@@ -345,9 +345,9 @@ export function GitHubIntegration(): JSX.Element {
             y2="223.492"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#4C9AFF" />
-            <stop offset="0.8134" stop-color="#0065FF" />
-            <stop offset="0.8713" stop-color="#0065FF" />
+            <stop stopColor="#4C9AFF" />
+            <stop offset="0.8134" stopColor="#0065FF" />
+            <stop offset="0.8713" stopColor="#0065FF" />
           </linearGradient>
           <linearGradient
             id="paint12_linear"
@@ -357,8 +357,8 @@ export function GitHubIntegration(): JSX.Element {
             y2="157.139"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#B2D4FF" />
-            <stop offset="1" stop-color="#2684FF" />
+            <stop stopColor="#B2D4FF" />
+            <stop offset="1" stopColor="#2684FF" />
           </linearGradient>
           <linearGradient
             id="paint13_linear"
@@ -368,8 +368,8 @@ export function GitHubIntegration(): JSX.Element {
             y2="0.510323"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#FFF0B2" />
-            <stop offset="1" stop-color="#FFC400" />
+            <stop stopColor="#FFF0B2" />
+            <stop offset="1" stopColor="#FFC400" />
           </linearGradient>
           <linearGradient
             id="paint14_linear"
@@ -379,8 +379,8 @@ export function GitHubIntegration(): JSX.Element {
             y2="36.2259"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#FFC400" />
-            <stop offset="1" stop-color="#FFF0B2" />
+            <stop stopColor="#FFC400" />
+            <stop offset="1" stopColor="#FFF0B2" />
           </linearGradient>
           <linearGradient
             id="paint15_linear"
@@ -390,8 +390,8 @@ export function GitHubIntegration(): JSX.Element {
             y2="141.017"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#FFC400" />
-            <stop offset="1" stop-color="#FFF0B2" />
+            <stop stopColor="#FFC400" />
+            <stop offset="1" stopColor="#FFF0B2" />
           </linearGradient>
           <linearGradient
             id="paint16_linear"
@@ -401,8 +401,8 @@ export function GitHubIntegration(): JSX.Element {
             y2="149.45"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#FFC400" />
-            <stop offset="1" stop-color="#FFF0B2" />
+            <stop stopColor="#FFC400" />
+            <stop offset="1" stopColor="#FFF0B2" />
           </linearGradient>
           <linearGradient
             id="paint17_linear"
@@ -412,8 +412,8 @@ export function GitHubIntegration(): JSX.Element {
             y2="221.995"
             gradientUnits="userSpaceOnUse"
           >
-            <stop offset="0.3435" stop-color="#6554C0" />
-            <stop offset="1" stop-color="#998DD9" />
+            <stop offset="0.3435" stopColor="#6554C0" />
+            <stop offset="1" stopColor="#998DD9" />
           </linearGradient>
           <linearGradient
             id="paint18_linear"
@@ -423,8 +423,8 @@ export function GitHubIntegration(): JSX.Element {
             y2="155.517"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#5243AA" />
-            <stop offset="1" stop-color="#8777D9" />
+            <stop stopColor="#5243AA" />
+            <stop offset="1" stopColor="#8777D9" />
           </linearGradient>
           <clipPath id="clip0">
             <rect
