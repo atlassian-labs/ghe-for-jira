@@ -6,7 +6,6 @@ import { mapPullrequestWebhook } from "./pullrequest";
 import { sendDevInfo } from "../devinfo/devinfo-client";
 import getWebhookType = GitHub.getWebhookType;
 import WebhookType = GitHub.WebhookType;
-import { createHmac } from "crypto";
 
 type WebhookMapper = (payload: GitHub.Webhook) => DevInfo.Repository;
 
@@ -24,13 +23,6 @@ export class InvalidJsonError extends Error {
     }
 }
 
-export class MissingSignatureError extends Error {
-    constructor() {
-        super("webhook did not contain a GitHub signature");
-        this.name = 'MissingSignatureError';
-    }
-}
-
 const getWebhookMapper = (payload: any): WebhookMapper => {
     switch (getWebhookType(payload)) {
         case WebhookType.PUSH:
@@ -44,26 +36,11 @@ const getWebhookMapper = (payload: any): WebhookMapper => {
     }
 }
 
-const validateSignature = (payload: string, githubSignature: string) => {
-    if(! githubSignature){
-        throw new MissingSignatureError();
-    }
-
-    console.log(`found signature from GitHub: ${githubSignature}`)
-
-    const hmac = createHmac('sha256', 'a secret');
-    hmac.update(payload);
-    const ourSignature = hmac.digest('hex');
-    console.log(`calculated signature: ${ourSignature}`);
-
-    return githubSignature == ourSignature;
-}
-
 /**
  * Maps an incoming webhook payload in the expected shape and then sends it to Jira's
  * DevInfo API. Returns the HTTP status code returned by the Jira DevInfo API.
  */
-export default async (cloudId: string, payload: string, githubSignature: string): Promise<number> => {
+export default async (cloudId: string, payload: string): Promise<number> => {
     let webhook: any;
 
     try {
