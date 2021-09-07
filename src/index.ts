@@ -1,4 +1,8 @@
-import webhookProcessor, { InvalidJsonError, UnsupportedWebhookTypeError } from "./webhook-mappers/webhook-processor"
+import webhookProcessor, {
+    InvalidJsonError,
+    MissingSignatureError,
+    UnsupportedWebhookTypeError
+} from "./webhook-mappers/webhook-processor"
 
 /**
  * Extracts the cloud ID from the "installContext" string
@@ -26,10 +30,14 @@ const response = (statusCode): WebtriggerResponse => ({
 exports.processWebhook = async (request, context) => {
     try {
         console.debug(`incoming webhook: ${request.body}`);
+        const webhookSignature = request.headers?.["x-hub-signature-256"];
         const cloudId = extractCloudId(context.installContext);
-        const httpStatus = await webhookProcessor(cloudId, request.body);
+        const httpStatus = await webhookProcessor(cloudId, request.body, webhookSignature);
         return response(httpStatus);
     } catch (e) {
+        if (e instanceof MissingSignatureError) {
+            console.debug("dropping webhook due to missing signature");
+        }
         if (e instanceof UnsupportedWebhookTypeError || e instanceof InvalidJsonError) {
             console.info("dropping unidentified webhook due to " + e.name);
         }
