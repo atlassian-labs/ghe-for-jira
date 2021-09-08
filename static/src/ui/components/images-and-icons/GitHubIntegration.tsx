@@ -1,5 +1,5 @@
 import React from "react";
-import { AdminPageImageContainer } from "../admin-page/AdminPage.styles";
+import { AdminPageImageContainer } from "../../pages/admin/AdminPage.styles";
 
 export function GitHubIntegrationImage(): JSX.Element {
   return (

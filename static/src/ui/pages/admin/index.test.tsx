@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import { AdminPage } from ".";
-import { jiraAdminPageCopy } from "../../common/copy";
+import { jiraAdminPageCopy } from "../../../common/copy";
 
 describe("Admin Page Suite", () => {
   it("Should render empty state", () => {

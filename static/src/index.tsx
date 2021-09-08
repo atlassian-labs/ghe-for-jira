@@ -1,6 +1,6 @@
 import React from "react";
 import * as ReactDOM from "react-dom";
-import { AdminPage } from "./ui/admin-page/index";
+import { AdminPage } from "./ui/pages/admin/index";
 import { AppContainer } from "./index.styles";
 
 const App = (): JSX.Element => {
