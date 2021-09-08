@@ -1,18 +1,19 @@
 import React from "react";
-import { NavbarContainer, NavbarList, NavbarListItems } from './Navbar.styles';
+import { NavbarContainer, NavbarList, NavbarListItems } from "./Navbar.styles";
+import ArrowLeftIcon from "@atlaskit/icon/glyph/arrow-left";
+import EditorHelpIcon from "@atlaskit/icon/glyph/editor/help";
 
 export const Navbar = () => {
-  const tempBackIcon = "<";
-
   // TODO - add links to back icon and nav list items
-  // TODO - replace back icon with correct image
   // TODO - replace question mark with icon
   return (
     <NavbarContainer>
-      <span>{tempBackIcon}</span>
+      <ArrowLeftIcon label="Back" />
 
       <NavbarList>
-        <NavbarListItems>?</NavbarListItems>
+        <NavbarListItems>
+          <EditorHelpIcon label="Help" />
+        </NavbarListItems>
         <NavbarListItems>Help</NavbarListItems>
       </NavbarList>
     </NavbarContainer>

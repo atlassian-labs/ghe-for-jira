@@ -6,8 +6,14 @@ import {
 import { connectionPageCopy } from "../../../common/copy";
 import { Navbar } from "../../components/navbar/index";
 import { ConnectJiraAndGitHubImage } from "../../components/images-and-icons/ConnectJiraAndGitHub";
+import { FormExample } from "src/ui/components/form";
 
 export const ConnectionPage = (): JSX.Element => {
+  const {
+    connectFormSecretInputLabel,
+    connectFormSubmitButtonLabel
+  } = connectionPageCopy;
+
   return (
     <>
       <Navbar />
@@ -17,6 +23,11 @@ export const ConnectionPage = (): JSX.Element => {
         <GlobalTitleStyle>
           {connectionPageCopy.connectionPageTitle}
         </GlobalTitleStyle>
+
+        <FormExample
+          secretFieldLabel={connectFormSecretInputLabel}
+          submitButtonLabel={connectFormSubmitButtonLabel}
+        />
       </GlobalPageContainerStyle>
     </>
   );

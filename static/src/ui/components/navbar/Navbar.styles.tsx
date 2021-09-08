@@ -7,6 +7,7 @@ export const NavbarContainer = styled.nav`
 `;
 
 export const NavbarList = styled.ul`
+  align-items: center;
   display: flex;
   list-style: none;
   margin: 0;
@@ -15,6 +16,6 @@ export const NavbarList = styled.ul`
 
 export const NavbarListItems = styled.li`
   &:not(:last-child) {
-    margin-right: 1em;
+    margin-right: 0.5em;
   }
 `;
