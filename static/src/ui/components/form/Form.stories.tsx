@@ -1,30 +1,33 @@
 import React, { ComponentProps } from "react";
 import { Story, Meta } from "@storybook/react";
-import { FormExample } from ".";
-import { AppContainer } from "../../../index.styles";
+import { FormBase } from ".";
+import { AppContainer, GlobalPageContainerStyle } from "../../../index.styles";
 import { connectionPageCopy } from "../../../common/copy";
 
 export default {
   title: "Components",
-  component: FormExample
+  component: FormBase
 } as Meta;
 
-const Template: Story<ComponentProps<typeof FormExample>> = (args) => {
+const Template: Story<ComponentProps<typeof FormBase>> = (args) => {
   const { secretFieldLabel, submitButtonLabel } = args;
 
   return (
     <AppContainer>
-      <FormExample
-        secretFieldLabel={secretFieldLabel}
-        submitButtonLabel={submitButtonLabel}
-      />
+      <GlobalPageContainerStyle>
+        {" "}
+        <FormBase
+          secretFieldLabel={secretFieldLabel}
+          submitButtonLabel={submitButtonLabel}
+        />
+      </GlobalPageContainerStyle>
     </AppContainer>
   );
 };
 
-export const FormExampleStory = Template.bind({});
+export const FormBaseStory = Template.bind({});
 
-FormExampleStory.args = {
+FormBaseStory.args = {
   secretFieldLabel: connectionPageCopy.connectFormSecretInputLabel,
   submitButtonLabel: connectionPageCopy.connectFormSubmitButtonLabel
 };
