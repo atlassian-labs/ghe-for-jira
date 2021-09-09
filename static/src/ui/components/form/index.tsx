@@ -4,6 +4,7 @@ import QuestionCircleIcon from "@atlaskit/icon/glyph/question-circle";
 import Button from "@atlaskit/button/standard-button";
 import Form, { Field, FormFooter } from "@atlaskit/form";
 import Textfield from "@atlaskit/textfield";
+import { TextFieldWrapper } from "./Form.styles";
 import {
   InputHeaderContainer,
   InputInfo,
@@ -20,6 +21,7 @@ export interface Inputprops {
   inputHeader: string;
   inputInfo: string;
   fieldLabel: string;
+  type: string;
 }
 
 interface FormBaseProps {
@@ -34,6 +36,7 @@ export const FormBase = (props: FormBaseProps) => {
   };
 
   const { formFieldData, submitButtonLabel } = props;
+  console.log(formFieldData);
 
   return (
     <FormContainer>
@@ -53,10 +56,11 @@ export const FormBase = (props: FormBaseProps) => {
                   </HeaderContainer>
                   <InputInfo>{field.inputInfo}</InputInfo>
                 </InputHeaderContainer>
+
                 <Field label={field.fieldLabel} name="command" defaultValue="">
                   {({ fieldProps }: any) => (
                     <InputContainer>
-                      <Textfield {...fieldProps} />
+                      <Textfield {...fieldProps} type={field.type} />
                       <CopyIconContainer>
                         <CopyIcon label="Copy" primaryColor="#42526E" />
                       </CopyIconContainer>
