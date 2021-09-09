@@ -40,7 +40,7 @@ const getWebhookMapper = (payload: any): WebhookMapper => {
  * Maps an incoming webhook payload in the expected shape and then sends it to Jira's
  * DevInfo API. Returns the HTTP status code returned by the Jira DevInfo API.
  */
-export default async (cloudId: string, payload: any): Promise<number> => {
+export default async (cloudId: string, payload: string): Promise<number> => {
     let webhook: any;
 
     try {

@@ -16,7 +16,7 @@ export const sendDevInfo = async (cloudId: string, repository: DevInfo.Repositor
 
     const devInfoPayload = buildDevInfoPayload(repository);
 
-    console.log(`sending payload to dev info API: ${JSON.stringify(devInfoPayload)}`);
+    console.log(`sending payload to dev info API`);
 
     // @ts-ignore // required so that Typescript doesn't complain about the missing "api" property
     const result = await global.api

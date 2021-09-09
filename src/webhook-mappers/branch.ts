@@ -34,6 +34,7 @@ const extractBranchFromWebhook = (webhook: GitHub.BranchWebhook, updateSequenceI
 }
 
 export const mapCreateWebhook = (webhook: GitHub.BranchWebhook): DevInfo.Repository => {
+    console.log(`incoming webhook is a branch webhook`);
     const updateSequenceId = new Date().getTime();
     return {
         id: webhook.repository.id.toString(),
