@@ -29,6 +29,6 @@
     "@forge/api": "^2.2.0",
     "@forge/resolver": "^1.3.3",
     "@forge/ui": "^0.14.1",
-    "jira-issue-key-parser": "^0.0.11"
+    "jira-issue-key-parser": "0.0.15"
   }
 }
