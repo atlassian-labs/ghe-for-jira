@@ -2,7 +2,7 @@ import React from "react";
 import { AdminPageMessage } from './AdminPage.styles';
 import { jiraAdminPageCopy } from "../../../common/copy";
 import { GitHubIntegrationImage } from "../../components/images-and-icons/GitHubIntegration";
-import { ActionButton } from "../../components/button/index";
+import { ActionButton } from "../../components/button";
 import { GlobalTitleStyle, GlobalPageContainerStyle } from '../../../index.styles';
 
 const AdminEmptyState = (): JSX.Element => {

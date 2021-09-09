@@ -4,7 +4,7 @@ modules:
       resource: admin-page
       resolver:
         function: admin-page-resolver
-      title: GHE Jira Connector - Admin Page
+      title: GHE for Jira - Configuration
       icon: https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png
   webtrigger:
     - key: webhook-receiver
@@ -26,7 +26,7 @@ app:
     snapshots: false
 resources:
   - key: admin-page
-    path: static/admin-page/dist
+    path: static/dist
 
 permissions:
   scopes:

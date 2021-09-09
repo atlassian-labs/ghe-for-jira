@@ -4,7 +4,7 @@ import {
   GlobalPageContainerStyle
 } from "../../../index.styles";
 import { connectionPageCopy } from "../../../common/copy";
-import { Navbar } from "../../components/navbar/index";
+import { Navbar } from "../../components/navbar";
 import { ConnectJiraAndGitHubImage } from "../../components/images-and-icons/ConnectJiraAndGitHub";
 import { FormBase } from "src/ui/components/form";
 

@@ -17,9 +17,12 @@ const getStatus = (action: string, merged: boolean): DevInfo.PullRequestStatus =
 }
 
 const extractPullrequestFromWebhook = (webhook: GitHub.PullrequestWebhook, updateSequenceId: number): DevInfo.Pullrequest => {
+    const issueKeys = IssueKeyExtractor.extractIssueKeys(webhook?.pull_request?.title)
+        .concat(IssueKeyExtractor.extractIssueKeys(webhook?.pull_request?.head?.ref));
+
     return {
         id: webhook.pull_request.id,
-        issueKeys: IssueKeyExtractor.extractIssueKeys(webhook.pull_request.title),
+        issueKeys: issueKeys,
         updateSequenceId: updateSequenceId,
         status: getStatus(webhook.pull_request.state, webhook.pull_request.merged),
         title: webhook.pull_request.title,
@@ -45,7 +48,7 @@ const extractPullrequestFromWebhook = (webhook: GitHub.PullrequestWebhook, updat
 }
 
 export const mapPullrequestWebhook = (webhook: GitHub.PullrequestWebhook): DevInfo.Repository => {
-    console.log(`pullrequest webhook: ${JSON.stringify(webhook)}`);
+    console.log(`incoming webhook is a pullrequest webhook`);
     const updateSequenceId = new Date().getTime();
     return {
         id: webhook.repository.id.toString(),
