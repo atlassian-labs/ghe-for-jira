@@ -6,10 +6,14 @@
   "license": "MIT",
   "scripts": {
     "start": "webpack serve",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "type": "commonjs",
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^12.0.0",
     "@types/node": "^12.20.19",
     "@types/react": "^16.14.13",
     "@types/webpack": "^5.28.0",
@@ -18,6 +22,7 @@
     "eslint-plugin-react-hooks": "^2.5.1",
     "html-webpack-plugin": "^5.3.2",
     "mocha": "^8.4.0",
+    "ts-jest": "^26.4.2",
     "ts-node": "^8.10.2",
     "typescript": "^4.1.0",
     "webpack": "^5.0.0",
@@ -36,11 +41,28 @@
     "@forge/babel-plugin-transform-ui": "^1.0.0",
     "@forge/bridge": "0.1.0-next.3",
     "@types/react-dom": "^17.0.9",
+    "@types/styled-components": "^5.1.14",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.3",
     "react-sweet-state": "^2.5.2",
     "styled-components": "^5.3.0",
     "ts-loader": "^6.2.2"
+  },
+  "jest": {
+    "setupFilesAfterEnv": [
+      "<rootDir>/src/common/test-utils/setupTests.ts"
+    ],
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
   }
 }
