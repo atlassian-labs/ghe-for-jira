@@ -13,7 +13,6 @@ export const GlobalPageContainerStyle = styled.section`
   margin: 5% auto;
 `;
 
-
 export const GlobalTitleStyle = styled.h2`
   ${typography.h700()};
   flex: 1 1 auto;

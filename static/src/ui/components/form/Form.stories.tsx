@@ -9,15 +9,23 @@ export default {
   component: FormBase
 } as Meta;
 
+const mockFormFieldData = [
+  {
+    inputHeader: "Input header",
+    inputInfo: "Something informative goes here",
+    fieldLabel: "Enter name",
+  }
+];
+
 const Template: Story<ComponentProps<typeof FormBase>> = (args) => {
-  const { secretFieldLabel, submitButtonLabel } = args;
+  const { formFieldData, submitButtonLabel } = args;
 
   return (
     <AppContainer>
       <GlobalPageContainerStyle>
         {" "}
         <FormBase
-          secretFieldLabel={secretFieldLabel}
+          formFieldData={formFieldData}
           submitButtonLabel={submitButtonLabel}
         />
       </GlobalPageContainerStyle>
@@ -28,6 +36,6 @@ const Template: Story<ComponentProps<typeof FormBase>> = (args) => {
 export const FormBaseStory = Template.bind({});
 
 FormBaseStory.args = {
-  secretFieldLabel: connectionPageCopy.connectFormSecretInputLabel,
+  formFieldData: mockFormFieldData,
   submitButtonLabel: connectionPageCopy.connectFormSubmitButtonLabel
 };

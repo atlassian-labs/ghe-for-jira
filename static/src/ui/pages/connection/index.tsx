@@ -10,7 +10,7 @@ import { FormBase } from "src/ui/components/form";
 
 export const ConnectionPage = (): JSX.Element => {
   const {
-    connectFormSecretInputLabel,
+    formFieldData,
     connectFormSubmitButtonLabel
   } = connectionPageCopy;
 
@@ -25,7 +25,7 @@ export const ConnectionPage = (): JSX.Element => {
         </GlobalTitleStyle>
 
         <FormBase
-          secretFieldLabel={connectFormSecretInputLabel}
+          formFieldData={formFieldData}
           submitButtonLabel={connectFormSubmitButtonLabel}
         />
       </GlobalPageContainerStyle>

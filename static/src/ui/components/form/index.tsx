@@ -1,121 +1,74 @@
 import React from "react";
 import CopyIcon from "@atlaskit/icon/glyph/copy";
+import QuestionCircleIcon from "@atlaskit/icon/glyph/question-circle";
 import Button from "@atlaskit/button/standard-button";
-import Form, {
-  ErrorMessage,
-  Field,
-  FormFooter,
-  ValidMessage
-} from "@atlaskit/form";
+import Form, { Field, FormFooter } from "@atlaskit/form";
 import Textfield from "@atlaskit/textfield";
+import {
+  InputHeaderContainer,
+  InputInfo,
+  InputHeader,
+  HeaderContainer
+} from "./Form.styles";
 import {
   FormContainer,
   FieldContainer,
   InputContainer,
   CopyIconContainer
 } from "./Form.styles";
-
-function validate(value: unknown) {
-  if (value !== "open sesame") {
-    return "INCORRECT_PHRASE";
-  }
-  return undefined;
+export interface Inputprops {
+  inputHeader: string;
+  inputInfo: string;
+  fieldLabel: string;
 }
 
-interface FormExampleProps {
-  secretFieldLabel: string;
+interface FormBaseProps {
+  formFieldData: Inputprops[];
   submitButtonLabel: string;
 }
 
-export const FormBase = (props: FormExampleProps) => {
+export const FormBase = (props: FormBaseProps) => {
   // TODO - add submit logic
   const handleSubmit = (formState: { command: string }) => {
     console.log("form state", formState);
   };
 
+  const { formFieldData, submitButtonLabel } = props;
+
   return (
     <FormContainer>
       <Form onSubmit={handleSubmit}>
         {({ formProps }) => (
-          <form {...formProps} name="validation-example">
-            <FieldContainer>
-              <div>
-                <h3>Webhook URL</h3>
-                <p>
-                  Paste this webhook into your GitHub Enterprise settings to
-                  complete the integration. This is unique to your Jira site.
-                </p>
-              </div>
-              <Field
-                label={props.secretFieldLabel}
-                name="command"
-                validate={validate}
-                defaultValue=""
-              >
-                {({ fieldProps, error, meta: { valid } }: any) => (
-                  <InputContainer>
-                    <Textfield {...fieldProps} />
-                    {/* TODO - update alidation message. */}
-                    {valid && <ValidMessage>Your wish granted</ValidMessage>}
-                    {error === "INCORRECT_PHRASE" && (
-                      // TODO - update error message
-                      <ErrorMessage>
-                        Incorrect, try &lsquo;open sesame&rsquo;
-                      </ErrorMessage>
-                    )}
-                    <CopyIconContainer>
-                      <CopyIcon
-                        label="Copy"
-                        primaryColor="#42526E"
-                        secondaryColor="#fafbfc"
-                      />
-                    </CopyIconContainer>
-                  </InputContainer>
-                )}
-              </Field>
-            </FieldContainer>
-
-            <FieldContainer>
-              <div>
-                <h3>Secret</h3>
-                <p>
-                  This secret must be inputed in your GitHub Enterprise settings
-                  to complete the integration. Edit your secret to create a
-                  custom password.
-                </p>
-              </div>
-              <Field
-                label={props.secretFieldLabel}
-                name="command"
-                validate={validate}
-                defaultValue=""
-              >
-                {({ fieldProps, error, meta: { valid } }: any) => (
-                  <InputContainer>
-                    <Textfield {...fieldProps} />
-                    {/* TODO - update alidation message. */}
-                    {valid && <ValidMessage>Your wish granted</ValidMessage>}
-                    {error === "INCORRECT_PHRASE" && (
-                      // TODO - update error message
-                      <ErrorMessage>
-                        Incorrect, try &lsquo;open sesame&rsquo;
-                      </ErrorMessage>
-                    )}
-                    <CopyIconContainer>
-                      <CopyIcon
-                        label="Copy"
-                        primaryColor="#42526E"
-                        secondaryColor="#fafbfc"
-                      />
-                    </CopyIconContainer>
-                  </InputContainer>
-                )}
-              </Field>
-            </FieldContainer>
+          <form {...formProps} name="connection-form">
+            {formFieldData.map((field, i) => (
+              <FieldContainer key={i}>
+                <InputHeaderContainer>
+                  <HeaderContainer>
+                    <InputHeader>{field.inputHeader}</InputHeader>
+                    <QuestionCircleIcon
+                      label="Question"
+                      primaryColor="#505F79"
+                      size="small"
+                    />
+                  </HeaderContainer>
+                  <InputInfo>{field.inputInfo}</InputInfo>
+                </InputHeaderContainer>
+                <Field label={field.fieldLabel} name="command" defaultValue="">
+                  {({ fieldProps }: any) => (
+                    <InputContainer>
+                      <Textfield {...fieldProps} />
+                      <CopyIconContainer>
+                        <CopyIcon label="Copy" primaryColor="#42526E" />
+                      </CopyIconContainer>
+                    </InputContainer>
+                  )}
+                </Field>
+              </FieldContainer>
+            ))}
 
             <FormFooter>
               <Button type="submit" appearance="primary">
-                {props.submitButtonLabel}
+                {submitButtonLabel}
               </Button>
             </FormFooter>
           </form>
