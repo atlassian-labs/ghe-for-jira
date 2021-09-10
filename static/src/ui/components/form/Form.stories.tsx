@@ -13,7 +13,8 @@ const mockFormFieldData = [
   {
     inputHeader: "Input header",
     inputInfo: "Something informative goes here",
-    fieldLabel: "Enter name",
+    fieldLabel: "Enter email",
+    type: "email"
   }
 ];
 

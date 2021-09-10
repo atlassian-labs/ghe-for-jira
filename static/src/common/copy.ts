@@ -13,13 +13,15 @@ export const connectionPageCopy = {
       inputHeader: "Webhook URL",
       inputInfo:
         "Paste this URL into your GitHub Enterprise webhook settings to complete the integration. This is unique to your Jira site.",
-      fieldLabel: "Webhook"
+      fieldLabel: "Webhook",
+      type: "text"
     },
     {
       inputHeader: "Secret",
       inputInfo:
         "Configure the same secret in your GitHub Enterprise webhook settings to complete the integration. Edit your secret to create a custom password.",
-      fieldLabel: "Secret text"
+      fieldLabel: "Secret text",
+      type: "password"
     }
   ],
   connectFormSubmitButtonLabel: "Done"
