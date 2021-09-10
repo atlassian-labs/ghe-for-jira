@@ -1,6 +1,6 @@
 import React, { ComponentProps } from "react";
 import { Story, Meta } from "@storybook/react";
-import { FormBase } from ".";
+import { FormBase, InputProps } from ".";
 import { AppContainer, GlobalPageContainerStyle } from "../../../index.styles";
 import { connectionPageCopy } from "../../../common/copy";
 
@@ -9,11 +9,12 @@ export default {
   component: FormBase
 } as Meta;
 
-const mockFormFieldData = [
+const mockFormFieldData : InputProps[] = [
   {
     inputHeader: "Input header",
     inputInfo: "Something informative goes here",
     fieldLabel: "Enter email",
+    fieldName: "email",
     type: "email"
   }
 ];
@@ -28,6 +29,7 @@ const Template: Story<ComponentProps<typeof FormBase>> = (args) => {
         <FormBase
           formFieldData={formFieldData}
           submitButtonLabel={submitButtonLabel}
+          onSubmit={(data) => console.log(`form submitted: ${JSON.stringify(data)}`)}
         />
       </GlobalPageContainerStyle>
     </AppContainer>

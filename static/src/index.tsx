@@ -1,12 +1,12 @@
 import React from "react";
 import * as ReactDOM from "react-dom";
-import { AdminPage } from "./ui/pages/admin";
 import { AppContainer } from "./index.styles";
+import { ConnectionPage } from "./ui/pages/connection";
 
 const App = (): JSX.Element => {
   return (
     <AppContainer>
-      <AdminPage />
+      <ConnectionPage />
     </AppContainer>
   );
 };

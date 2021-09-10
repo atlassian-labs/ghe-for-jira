@@ -4,7 +4,6 @@ import QuestionCircleIcon from "@atlaskit/icon/glyph/question-circle";
 import Button from "@atlaskit/button/standard-button";
 import Form, { Field, FormFooter } from "@atlaskit/form";
 import Textfield from "@atlaskit/textfield";
-import { TextFieldWrapper } from "./Form.styles";
 import {
   InputHeaderContainer,
   InputInfo,
@@ -17,30 +16,31 @@ import {
   InputContainer,
   CopyIconContainer
 } from "./Form.styles";
-export interface Inputprops {
+import { OnSubmitHandler } from "@atlaskit/form/types";
+
+export interface InputProps {
   inputHeader: string;
   inputInfo: string;
+  fieldName: string;
   fieldLabel: string;
+  defaultValue?: () => string,
   type: string;
 }
 
 interface FormBaseProps {
-  formFieldData: Inputprops[];
+  formFieldData: InputProps[];
   submitButtonLabel: string;
+  onSubmit: OnSubmitHandler<any>;
 }
 
 export const FormBase = (props: FormBaseProps) => {
-  // TODO - add submit logic
-  const handleSubmit = (formState: { command: string }) => {
-    console.log("form state", formState);
-  };
 
-  const { formFieldData, submitButtonLabel } = props;
+  const { formFieldData, submitButtonLabel, onSubmit } = props;
   console.log(formFieldData);
 
   return (
     <FormContainer>
-      <Form onSubmit={handleSubmit}>
+      <Form onSubmit={onSubmit}>
         {({ formProps }) => (
           <form {...formProps} name="connection-form">
             {formFieldData.map((field, i) => (
@@ -57,7 +57,7 @@ export const FormBase = (props: FormBaseProps) => {
                   <InputInfo>{field.inputInfo}</InputInfo>
                 </InputHeaderContainer>
 
-                <Field label={field.fieldLabel} name="command" defaultValue="">
+                <Field label={field.fieldLabel} name={field.fieldName} defaultValue={field.defaultValue ? field.defaultValue : ""}>
                   {({ fieldProps }: any) => (
                     <InputContainer>
                       <Textfield {...fieldProps} type={field.type} />
