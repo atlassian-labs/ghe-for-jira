@@ -2,8 +2,6 @@ modules:
   jira:adminPage:
     - key: ghe-jira-connector-jira-admin-page
       resource: admin-page
-      resolver:
-        function: admin-page-resolver
       title: GHE for Jira - Configuration
       icon: https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png
   webtrigger:
@@ -17,8 +15,6 @@ modules:
   function:
     - key: webhook-function
       handler: index.processWebhook
-    - key: admin-page-resolver
-      handler: resolver.handler
 app:
   id: ari:cloud:ecosystem::app/fe8cb8c4-0b40-4b5c-a63a-ed9d459029fd
   name: ghe-for-jira
